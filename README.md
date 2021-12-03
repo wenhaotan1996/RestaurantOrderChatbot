@@ -3,6 +3,7 @@
 ## To run the chatbot:  
 You would need to have [Rasa](https://rasa.com/docs/rasa/installation/)
 Run the following commands in order:  
+Train the chatbot: `rasa train`  
 Start the actions server: `rasa run actions`  
 On a seperate terminal run chatbot interface: `rasa shell`  
    
