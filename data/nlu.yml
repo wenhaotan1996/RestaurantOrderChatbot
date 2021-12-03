@@ -1,0 +1,339 @@
+version: "2.0"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - good afternoon
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: order_burger
+    examples: |
+      - [Double Double](burger)
+      - [DD](burger)
+      - [Double-Double](burger)
+      - [Double Burger](burger)
+      - I would like a [Double Double](burger)
+      - Can I have a [Hamburger](burger)
+      - I want a [ChesseBurger](burger)
+      - one [Hamburger](burger) please
+      - I want to order a [Hamburger](burger)
+      - [No burger](burger)
+
+  - lookup: burger
+    examples: |
+      - Double Double
+      - Cheeseburger
+      - Hamburger
+      - no burger
+
+  - synonym: no burger
+    examples: |
+      - No burger
+
+  - synonym: Double Double
+    examples: |
+      - Double-Double
+      - double-double
+      - Double-double
+      - Double Burger
+      - double double
+      - Double double
+
+  - synonym: Cheeseburger
+    examples: |
+      - Cheese Burger
+
+  - intent: order_drink
+    examples: |
+      - [Coke](drink)
+      - [No drink](drink)
+      - [Diet Coke](drink)
+      - [7up](drink)
+      - [Dr.Pepper](drink)
+      - [diet coke](drink)
+      - [Root Bear](drink)
+      - [Pink Lemonade](drink)
+      - [Zero Sugar Lemonade](drink)
+      - [Iced Tea](drink)
+      - [Milk](drink)
+      - [Coffee](drink)
+      - [Hot Cocoa](drink)
+      - I would like to have [Coke](drink)
+      - Can I have [Diet Coke](drink)
+      - I want [Diet Coke](drink)
+      - [Coke](drink) please
+      - I want to order [7up](drink)
+
+  - lookup: drink
+    examples: |
+      - Coke
+      - Diet Coke
+      - 7up
+      - Dr.Pepper
+      - Root Bear
+      - Pink Lemonade
+      - Zero Sugar Lemonade
+      - Iced Tea
+      - Milk
+      - Coffee
+      - Hot Cocoa
+      - no drink
+
+  - synonym: no drink
+    examples: |
+      - None
+      - None of them
+      - Pass
+      - No drink
+
+  - synonym: Diet Coke
+    examples: |
+      - diet coke
+      - Diet coke
+      - diet Coke
+
+  - intent: order_combo
+    examples: |
+      - Combo [1](combo)
+      - Combo [one](combo)
+      - Combo [2](combo)
+      - Combo [two](combo)
+      - Combo [3](combo)
+      - Combo [three](combo)
+      - combo [1](combo)
+      - combo [one](combo)
+      - combo [2](combo)
+      - combo [two](combo)
+      - combo [3](combo)
+      - combo [three](combo)
+      - I would like a combo number [one](combo)
+      - I would like a combo number [two](combo)
+      - I would like a combo number [three](combo)
+      - I want a combo [one](combo)
+      - I want a combo [two](combo)
+      - I want a combo [three](combo)
+
+  - lookup: combo
+    examples: |
+      - one
+      - two
+      - three
+
+  - synonym: one
+    examples: |
+      - 1
+      - first
+
+  - synonym: two
+    examples: |
+      - 2
+
+  - synonym: three
+    examples: |
+      - 3
+      - last
+
+  - intent: order_fries
+    examples: |
+      - [No fries](fries)
+      - [no fries](fries)
+      - [Fries](fries)
+      - I want [no fries](fries)
+      - I want [fries](fries)
+
+  - lookup: fries
+    examples: |
+      - fries
+      - no fries
+
+  - synonym: fries
+    examples: |
+      - Fries
+
+  - synonym: no fries
+    examples: |
+      - No Fries
+      - Without fries
+      - No fries
+
+  - synonym: large
+    examples: |
+      - Large
+
+  - synonym: small
+    examples: |
+      - Small
+
+  - synonym: medium
+    examples: |
+      - Medium
+
+  - intent: faq/ask_burger
+    examples: |
+      - What burgers do you have
+      - Tell me all the burgers
+      - List all burgers for me
+
+  - intent: faq/ask_drinks
+    examples: |
+      - What drinks do you have
+      - Tell me all the drinks
+      - List all drinks for me
+
+  - intent: faq/ask_combo
+    examples: |
+      - What combos do you have
+      - Tell me all the combos
+      - List all combos for me
+
+  - intent: faq/ask_how_to_order
+    examples: |
+      - How do I order
+      - What do you have
+      - Help
+      - How do I start
+
+  - intent: faq/ask_business_hour
+    examples: |
+      - What is your business hours
+      - WHat time are you open
+      - How long to you open each day
+      - Operating hours
+      - Business hours
+
+  - intent: new_order
+    examples: |
+      - I want to start a new order
+      - New order
+      - I want to start over
+
+  - intent: order_size
+    examples: |
+      - I want to order a [small] size drink(size)
+      - I want to order a [medium] size drink(size)
+      - I want to order a [large] size drink(size)
+      - [small](size)
+      - [medium](size)
+      - [large](size)
+
+  - intent: repeat_order
+    examples: |
+      - Repeat my order for me
+      - What do I have so far
+      - What do I have right now
+      - Tell me what I have ordered
+      - Repeat order
+
+  - intent: get_price
+    examples: |
+      - How much is my current order
+      - Calculate the total price for me
+      - Tell me the total price
+      - Get price
+
+  - intent: faq/ask_identity
+    examples: |
+      - What is your name?
+      - Who is helping me today?
+      - What do you call yourself?
+      - Who are you?
+
+  - intent: chitchat/compliment
+    examples: |
+      - Your service is wonderful.
+      - I love your restaurant.
+      - I like your style.
+      - We love coming here.
+      - This place is great!
+      - You are wonderful.
+
+  - intent: chitchat/weather
+    examples: |
+      - The weather today is wonderful
+      - Wow that weather
+      - What do you think of the weather today

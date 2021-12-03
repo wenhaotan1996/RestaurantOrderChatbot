@@ -1,0 +1,55 @@
+version: "2.0"
+
+stories:
+  - story: greet and ask to start order
+    steps: 
+      - intent: greet
+      - action: utter_ask_to_start_order 
+
+  - story: order with a combo
+    steps:
+      - intent: order_combo
+        entities:
+          - combo: one
+      - action: action_set_item_from_combo
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_repeat_order
+
+  - story: order start with a burger
+    steps:
+      - intent: order_burger
+        entities:
+          - burger: "Double Double"
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_repeat_order
+
+  - story: order start with a drink
+    steps:
+      - intent: order_drink
+        entities:
+          - drink: "Diet Coke"
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_repeat_order
+
+  - story: order start with fries
+    steps:
+      - intent: order_fries
+        entities:
+          - fries: "fries"
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_repeat_order
+
+
+  - story: new order
+    steps:
+      - intent: new_order
+      - action: action_reset_all_slots
+      - action: utter_ask_to_start_order

@@ -1,0 +1,195 @@
+version: "2.0"
+
+entities:
+  - burger
+  - drink
+  - fries
+  - combo
+  - size
+
+slots:
+  burger:
+    type: categorical
+    values:
+      - Double Double
+      - Cheeseburger
+      - Hamburger
+      - no burger
+    influence_conversation: false
+  drink:
+    type: categorical
+    values:
+      - Coke
+      - Diet Coke
+      - 7up
+      - Dr.Pepper
+      - Root Bear
+      - Pink Lemonade
+      - Zero Sugar Lemonade
+      - Iced Tea
+      - Milk
+      - Coffee
+      - Hot Cocoa
+      - no drink
+    influence_conversation: false
+  size:
+    type: categorical
+    values:
+      - small
+      - medium
+      - large
+    influence_conversation: false
+  fries:
+    type: categorical
+    values:
+      - fries
+      - no fries
+    influence_conversation: false
+  combo:
+    type: categorical
+    values:
+      - one
+      - two
+      - three
+    influence_conversation: false
+
+forms:
+  order_form:
+    required_slots:
+      burger:
+        - type: from_entity
+          entity: burger
+          intent: order_burger
+      fries:
+        - type: from_entity
+          entity: fries
+          intent: order_fries
+      drink:
+        - type: from_entity
+          entity: drink
+          intent: order_drink
+      size:
+        - type: from_entity
+          entity: size
+          intent: order_size
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - order_burger
+  - order_drink
+  - order_size
+  - order_fries
+  - order_combo
+  - chitchat
+  - faq
+  - new_order
+  - get_price
+  - repeat_order
+
+actions:
+  - action_set_item_from_combo
+  - validate_order_form
+  - action_compute_price
+  - action_reset_all_slots
+  - action_repeat_order
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_default:
+    - text: "Sorry. I didn't catch that. Could you say that again in another way?"
+
+  utter_fallback:
+    - text: "Sorry. I didn't catch that. Could you say that again in another way?"
+
+  # testing
+  utter_repeat_order:
+    - text: "You got {burger} and {drink}"
+
+  utter_repeat_combo:
+    - text: "You ordered combo {combo}"
+  #####################
+
+  # form asking
+  utter_ask_burger:
+    - text: "Which burger would you like to have?"
+
+  utter_ask_drink:
+    - text: "Which drink would you like to have?"
+
+  utter_ask_size:
+    - text: "What size?"
+
+  utter_ask_fries:
+    - text: "Do you want french fries with your burger or no fries?"
+  ################
+
+  # order related
+  utter_ask_to_start_order:
+    - text: "Hello there! What can I get for you?"
+
+  utter_finalize_order:
+    - text: |-
+        The order is for {name} at {address} with number {number}, the order contains:
+          burger: {burger},
+          fries: {fries},
+          drink: {drink},
+        The total charge for this order is going to be {price}
+  ################
+  # faq
+  utter_faq/ask_burger:
+    - text: "For burgers, we have 1.Double-Double 2.Cheeseburger 3.Hamburger"
+
+  utter_faq/ask_drinks:
+    - text: "For drinks, we have Coke, Diet Coke, 7up, Dr.Pepper, Root Bear, Pink Lemonade, Zero Sugar Lemonade, Iced Tea, Milk, Coffee, Hot Cocoa"
+
+  utter_faq/ask_combo:
+    - text: "Each combo comes with one burger, one fries, and one medium size drink. We have three combos: 1.Double-Double 2.Cheeseburger 3.Hamburger"
+
+  utter_faq/ask_how_to_order:
+    - text: "You could order one of our three combos or order items like burgers, fries, and drinks directly"
+
+  utter_faq/ask_business_hour:
+    - text: "We are open everyday from 10:00 AM to 12:00 AM except for holidays"
+
+  utter_faq/ask_identity:
+    - text: "I am a charbot AI for taking orders at an In & Out Restaurant"
+  #################
+
+  ## chitchat
+  utter_chitchat/compliment:
+    - text: "Thank you so much!"
+    - text: "Thank you! You are so kind!"
+
+  utter_chitchat/weather:
+    - text: "The weather today sure is wonderful"
+    - text: "I like the weather today too"
+  #################
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
